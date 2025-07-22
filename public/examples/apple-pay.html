@@ -14,12 +14,14 @@
     </style>
     <script
       type="text/javascript"
-      src="https://sandbox.web.squarecdn.com/v1/square.js"
+      src="https://web.squarecdn.com/v1/square.js"
     ></script>
     <script>
-      const appId = '{APPLICATION_ID}';
-      const locationId = '{LOCATION_ID}';
+      const appId = 'sq0idp-8B_Zr5kqpa2gESpneN8wfQ';
+      const locationId = 'L4V1J2XRAK0R3';
 
+      // const appId = 'sq0idp-dBaR7_ER_KLLaukvjIUrSw'
+      // const locationId = 'L412Z84E6SSDE'
       async function initializeCard(payments) {
         const card = await payments.card();
         await card.attach('#card-container');
