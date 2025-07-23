@@ -26,8 +26,9 @@ async function getPayment(req, res) {
 }
 
 async function createPayment(req, res) {
+  console.log('here');
   const payload = await json(req);
-  logger.debug(JSON.stringify(payload));
+  console.log(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
   // if you would prefer to handle payload validation on your own.
   if (!validatePaymentPayload(payload)) {
@@ -36,7 +37,7 @@ async function createPayment(req, res) {
 
   await retry(async (bail, attempt) => {
     try {
-      logger.debug('Creating payment', { attempt });
+      console.log('Creating payment', { attempt });
 
       const payment = {
         idempotencyKey: payload.idempotencyKey,
@@ -64,7 +65,7 @@ async function createPayment(req, res) {
 
       const { payment: paymentResponse } =
         await square.payments.create(payment);
-      logger.info('Payment succeeded!', { paymentResponse });
+      console.log('Payment succeeded!', { paymentResponse });
 
       send(res, 200, {
         success: true,
@@ -78,7 +79,7 @@ async function createPayment(req, res) {
     } catch (ex) {
       if (ex instanceof SquareError) {
         // likely an error in the request. don't retry
-        logger.error(ex.errors);
+        console.error(ex.errors);
         bail(ex);
       } else {
         // IDEA: send to error reporting service

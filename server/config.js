@@ -19,10 +19,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 // logger.debug('Parsed configuration:', parsed);
 
 // // export secrets stored in .env.production or .env.sandbox (based on .env.example)
-console.log(
-  'square access token exists',
-  Boolean(process.env.SQUARE_ACCESS_TOKEN),
-);
+
 module.exports = {
   accessToken: process.env.SQUARE_ACCESS_TOKEN,
   isProduction,
