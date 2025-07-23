@@ -17,6 +17,7 @@ const {
 } = require('./server/schema');
 // square provides the API client and error types
 const { SquareError, client: square } = require('./server/square');
+const { isProduction } = require('./server/config');
 
 async function getPayment(req, res) {
   logger.info(req);
@@ -28,7 +29,7 @@ async function getPayment(req, res) {
 async function createPayment(req, res) {
   console.log('here');
   const payload = await json(req);
-  console.log(JSON.stringify(payload));
+  // console.log(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
   // if you would prefer to handle payload validation on your own.
   if (!validatePaymentPayload(payload)) {
@@ -67,6 +68,7 @@ async function createPayment(req, res) {
         payment.verificationToken = payload.verificationToken;
       }
 
+      console.log(isProduction);
       const { payment: paymentResponse } =
         await square.payments.create(payment);
       console.log('Payment succeeded!', { paymentResponse });
