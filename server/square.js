@@ -1,11 +1,9 @@
-const { SquareError, SquareClient, SquareEnvironment } = require('square');
+const { SquareError, SquareClient } = require('square');
 
-const { isProduction, SQUARE_ACCESS_TOKEN } = require('./config');
+const { SQUARE_ACCESS_TOKEN } = require('./config');
 
 const client = new SquareClient({
-  environment: isProduction
-    ? SquareEnvironment.Production
-    : SquareEnvironment.Sandbox,
+  environment: 'https://connect.squareup.com',
   token: SQUARE_ACCESS_TOKEN,
 });
 

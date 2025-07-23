@@ -21,6 +21,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 // // export secrets stored in .env.production or .env.sandbox (based on .env.example)
 
 module.exports = {
-  accessToken: process.env.SQUARE_ACCESS_TOKEN,
+  SQUARE_ACCESS_TOKEN: process.env.SQUARE_ACCESS_TOKEN,
   isProduction,
 };
