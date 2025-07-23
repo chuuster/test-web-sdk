@@ -143,7 +143,7 @@ async function storeCard(req, res) {
 
 // serve static files like index.html and favicon.ico from public/ directory
 async function serveStatic(req, res) {
-  logger.debug('Handling request', req.path);
+  logger.info('Handling request', req.path);
   await staticHandler(req, res, {
     public: 'public',
   });
