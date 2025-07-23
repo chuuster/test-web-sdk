@@ -17,6 +17,13 @@ const {
 // square provides the API client and error types
 const { SquareError, client: square } = require('./server/square');
 
+async function getPayment(req, res) {
+  logger.info(req);
+  res.statusCode = 200; //
+  res.setHeader('Content-Type', 'text/plain'); //
+  res.end('Hello from the Node.js server!'); //
+}
+
 async function createPayment(req, res) {
   const payload = await json(req);
   logger.debug(JSON.stringify(payload));
@@ -145,6 +152,7 @@ async function serveStatic(req, res) {
 // export routes to be served by micro
 module.exports = router(
   post('/payment', createPayment),
+  get('/payment', getPayment),
   post('/card', storeCard),
   get('/*', serveStatic),
 );
