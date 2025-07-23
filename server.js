@@ -38,6 +38,10 @@ async function createPayment(req, res) {
   await retry(async (bail, attempt) => {
     try {
       console.log('Creating payment', { attempt });
+      console.log(
+        'access token exists',
+        Boolean(process.env.SQUARE_ACCESS_TOKEN),
+      );
 
       const payment = {
         idempotencyKey: payload.idempotencyKey,
