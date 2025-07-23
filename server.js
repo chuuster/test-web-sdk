@@ -6,6 +6,7 @@ const { router, get, post } = require('microrouter');
 const staticHandler = require('serve-handler');
 // async-retry will retry failed API requests
 const retry = require('async-retry');
+const path = require('path');
 
 // logger gives us insight into what's happening
 const logger = require('./server/logger');
@@ -144,9 +145,15 @@ async function storeCard(req, res) {
 // serve static files like index.html and favicon.ico from public/ directory
 async function serveStatic(req, res) {
   logger.info('Handling request', req.path);
-  await staticHandler(req, res, {
-    public: 'public',
-  });
+  try {
+    await staticHandler(req, res, {
+      public: path.join(__dirname, 'public'),
+    });
+  } catch (error) {
+    console.error(error);
+    res.statusCode = 500;
+    res.end('Internal Server Error');
+  }
 }
 
 // export routes to be served by micro
