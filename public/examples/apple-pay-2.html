@@ -161,9 +161,10 @@
 
         // Checkpoint 2.
         if (applePay) {
-          const applePayButton = document.getElementById('apple-pay-button');
+          const applePayButton = document.getElementById('ap-button');
           applePayButton.addEventListener('click', async function (event) {
             event.preventDefault();
+            console.log('hi');
             await handlePaymentMethodSubmission(event, applePay);
           });
         }
@@ -172,15 +173,17 @@
   </head>
   <body>
     <form id="payment-form">
-      <button id="apple-pay-button"></button>
+      <!-- <button id="apple-pay-button"></button> -->
       <div id="card-container"></div>
       <button id="card-button" type="button">Pay $1.00</button>
     </form>
     <div id="payment-status-container"></div>
-    <apple-pay-button
-      buttonstyle="black"
-      type="buy"
-      locale="el-GR"
-    ></apple-pay-button>
+    <div id="ap-button">
+      <apple-pay-button
+        buttonstyle="black"
+        type="buy"
+        locale="el-GR"
+      ></apple-pay-button>
+    </div>
   </body>
 </html>
