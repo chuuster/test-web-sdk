@@ -2,13 +2,14 @@
 <html>
   <head>
     <link href="/app.css" rel="stylesheet" />
+    <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <style>
       #apple-pay-button {
         height: 48px;
         width: 100%;
         display: inline-block;
         -webkit-appearance: -apple-pay-button;
-        -apple-pay-button-type: plain;
+        -apple-pay-button-type: continue;
         -apple-pay-button-style: black;
       }
     </style>
@@ -176,5 +177,10 @@
       <button id="card-button" type="button">Pay $1.00</button>
     </form>
     <div id="payment-status-container"></div>
+    <apple-pay-button
+      buttonstyle="black"
+      type="buy"
+      locale="el-GR"
+    ></apple-pay-button>
   </body>
 </html>
