@@ -162,7 +162,8 @@
         // Checkpoint 2.
         console.log('applePay', applePay);
         if (applePay) {
-          const applePayButton = document.getElementById('ap-button');
+          const applePayButton =
+            document.getElementsByTagName('apple-pay-button')[0];
           applePayButton.addEventListener('click', async function (event) {
             // event.preventDefault();
             console.log('hi');
