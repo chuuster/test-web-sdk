@@ -160,10 +160,11 @@
         });
 
         // Checkpoint 2.
+        console.log('applePay', applePay);
         if (applePay) {
           const applePayButton = document.getElementById('ap-button');
           applePayButton.addEventListener('click', async function (event) {
-            event.preventDefault();
+            // event.preventDefault();
             console.log('hi');
             await handlePaymentMethodSubmission(event, applePay);
           });
@@ -180,6 +181,7 @@
     <div id="payment-status-container"></div>
     <div id="ap-button">
       <apple-pay-button
+        id="ap-button"
         buttonstyle="black"
         type="buy"
         locale="el-GR"
